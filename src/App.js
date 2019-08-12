@@ -7,22 +7,41 @@ import BottomRow from "./BottomRow";
 function App() {
   //TODO: STEP 2 - Establish your applictaion's state with some useState hooks.  You'll need one for the home score and another for the away score.
 
-  // const [homeScore, setHomeScore] = useState(0);
-  // const [awayScore, setAwayScore] = useState(0);
-
+  // initial count 
   const initialCount = 0;
+  
+  // home team
   const [homeScore, setHomeScore] = useState(initialCount);
+  const [homeFieldGoal, setHomeFieldGoal] = useState(initialCount)
+  
+  // away team
   const [awayScore, setAwayScore] = useState(initialCount);
+  const [awayFieldGoal, setAwayFieldGoal] = useState(initialCount)
 
   // event handlers 
+  
+  // homeScore
   const handleHomeScore = e => {
     e.preventDefault();
-     setHomeScore(homeScore + 7)
+    setHomeScore(homeScore + 7)
   }
 
+   // homeFeildGoal
+   const handleHomeFieldGoal = e => {
+    e.preventDefault();
+    setHomeFieldGoal(setHomeScore(homeScore + 3))
+  }
+
+  // awayScore
   const handleAwayScore = e => {
     e.preventDefault();
-    return setAwayScore(awayScore + 7)
+    setAwayScore(awayScore + 7)
+  }
+
+  // away feild goal
+  const handleAwayFieldGoal = e => {
+    e.preventDefault();
+    setAwayFieldGoal(setAwayScore(awayScore + 3))
   }
 
   return (
@@ -48,17 +67,20 @@ function App() {
         <div className="homeButtons">
           {/* TODO STEP 4 - Now we need to attach our state setter functions to click listeners. */}
           
-          <button onClick= {handleHomeScore}
-          {...console.log(handleHomeScore)}
+          <button onClick={handleHomeScore}
           className="homeButtons__touchdown">Home Touchdown</button>
           
-          <button className="homeButtons__fieldGoal">Home Field Goal</button>
+          <button onClick={handleHomeFieldGoal} className="homeButtons__fieldGoal">Home Field Goal</button>
+        
         </div>
         
         <div className="awayButtons">
-          <button onClick= {handleAwayScore} className="awayButtons__touchdown">Away Touchdown</button>
           
-          <button className="awayButtons__fieldGoal">Away Field Goal</button>
+          <button onClick={handleAwayScore} className="awayButtons__touchdown">Away Touchdown</button>
+          
+          <button onClick={handleAwayFieldGoal} 
+          className="awayButtons__fieldGoal">Away Field Goal</button>
+        
         </div>
       </section>
     </div>
